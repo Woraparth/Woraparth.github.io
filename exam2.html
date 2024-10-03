@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Englist Discover - Exam 1</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .score {
+            display: none; /* Hide score initially */
+            font-size: 20px; /* Style for score display */
+            margin-top: 20px; /* Spacing above score */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="unit.html">Unit</a>
+        <a href="exam.html">Exam</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Exam 2: Questions</h1>
+        </header>
+
+        <section class="content">
+            <form id="exam-form">
+                <h2>Question 1: What is the capital of France?</h2>
+                <label>
+                    <input type="radio" name="question1" value="a"> A) Berlin
+                </label><br>
+                <label>
+                    <input type="radio" name="question1" value="b"> B) Madrid
+                </label><br>
+                <label>
+                    <input type="radio" name="question1" value="c"> C) Paris
+                </label><br>
+                <label>
+                    <input type="radio" name="question1" value="d"> D) Rome
+                </label><br>
+
+                <h2>Question 2: What is the largest planet in our solar system?</h2>
+                <label>
+                    <input type="radio" name="question2" value="a"> A) Earth
+                </label><br>
+                <label>
+                    <input type="radio" name="question2" value="b"> B) Jupiter
+                </label><br>
+                <label>
+                    <input type="radio" name="question2" value="c"> C) Mars
+                </label><br>
+                <label>
+                    <input type="radio" name="question2" value="d"> D) Saturn
+                </label><br>
+
+                <h2>Question 3: Who wrote "Romeo and Juliet"?</h2>
+                <label>
+                    <input type="radio" name="question3" value="a"> A) Charles Dickens
+                </label><br>
+                <label>
+                    <input type="radio" name="question3" value="b"> B) William Shakespeare
+                </label><br>
+                <label>
+                    <input type="radio" name="question3" value="c"> C) Mark Twain
+                </label><br>
+                <label>
+                    <input type="radio" name="question3" value="d"> D) Leo Tolstoy
+                </label><br>
+
+                <button type="submit" class="exam-button">Submit Exam</button>
+            </form>
+
+            <!-- Score Display -->
+            <div class="score" id="score"></div>
+        </section>
+    </div>
+
+    <footer style="position: fixed; bottom: 10px; right: 10px; color: white;">
+        © 1990-2024 Edusoft LTD. All Rights Reserved.
+    </footer>
+
+    <script>
+        document.getElementById('exam-form').onsubmit = function(event) {
+            event.preventDefault(); // Prevent default form submission
+            let score = 0;
+
+            // Correct answers
+            const answers = {
+                question1: 'c', // Correct answer for question 1
+                question2: 'b', // Correct answer for question 2
+                question3: 'b'  // Correct answer for question 3
+            };
+
+            // Check answers
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            // Display the score
+            const scoreDisplay = document.getElementById('score');
+            scoreDisplay.textContent = `Your score: ${score} out of ${Object.keys(answers).length}`;
+            scoreDisplay.style.display = 'block'; // Show the score
+        };
+    </script>
+
+</body>
+</html>
